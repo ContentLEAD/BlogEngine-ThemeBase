@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="site.master.cs" Inherits="StandardSite" %>
+<%@ Import Namespace="BlogEngine.Core" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head runat="server" profile="http://gmpg.org/xfn/11">
+	<link rel="stylesheet" href="css/normalize.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/style-loggedin.css" type="text/css" ID="loggedInStyle" runat="server" />
+</head>
+
+<body runat="server" ID="bodyTag">
+<form runat="Server" class="body">
+<div id="container">
+	
+	<div id="content-container">
+	<div id="content">
+		<h1 ID="NewsHeader" runat="server" class="news-header"><%= GetHeaderText() %></h1>
+		<blog:SearchOnSearch runat="server" MaxResults="3" Headline="You searched for" Text="Here are some results for the search term on this website" />
+		<asp:ContentPlaceHolder ID="cphBody" runat="server" />
+		<div class="clear"></div>
+	</div> <!-- content -->
+	</div> <!-- content-container -->
+	
+	<div id="sidebar-container">
+	<div id="sidebar">
+		<blog:WidgetZone runat="server" ZoneName="be_WIDGET_ZONE" />
+		<div class="clear"></div>
+	</div> <!-- sidebar -->
+	</div> <!-- sidebar-container -->
+	
+	<div id="footer-container">
+	<div id="footer">
+		<p id="copyright">Copyright &copy; <%= DateTime.Now.Year %> <%=BlogSettings.Instance.Name %>. All rights reserved.</p>
+		<div class="clear"></div>
+	</div> <!-- footer -->
+	</div> <!-- footer-container -->
+	
+	<div class="clear"></div>
+</div> <!-- container -->
+</form>
+</body>
+</html>

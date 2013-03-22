@@ -1,0 +1,186 @@
+/*	ContentLEAD base styling for BlogEngine
+	simple, nonintrusive styles to be built upon for integrations
+	normalizing styles and quelling browser bugs handled by normalize.css
+	http://necolas.github.com/normalize.css/
+*/
+
+/*	TOC: (search for bracketed letters to jump)
+	i. style documentation
+		[ia] useful classes
+	1. layout/structure
+		[1a] layout
+		[1b] content divs
+	2. blogengine controls
+		[2a] widget controls
+	3. importer content
+		[3a] thumbnails
+	4. style shims
+		[4a] widget link lists
+		[4b] post navigation
+		[4c] links
+		[4d] related posts
+*/
+
+/* # i. style documentation # */
+
+/* = [ia] useful classes = */
+/*	- single posts can be targeted using the .single class on the body tag.
+		- example: apply a red background to a single post's content: body.single .post { background-color: red; }
+	- date archives can be targeted using the .date-archive class on the body tag.
+		- example: apply a blue background to the first post in a date archive: body.date-archive .post0 { background-color: blue; }
+	- category archives can be targeted using the .category-archive class on the body tag.
+		- example: apply a green background to the widget zone in category archives: body.category-archive .widgetzone { background-color: green; }
+	- the list of posts displayed in archives, categories, and the home page can be targeted using the .posts class.
+		- example: apply italics to all post links in a category: .posts h2.post-title a { font-style: italic; }
+	- the h1 for the list of posts displayed in archives, categories, and the home page can be targeted using the .news-header class.
+		- example: apply a border to the h1 (not on single posts): .news-header { border: 1px solid black; }
+	- post titles across all page types can be targeted using the .post-title class.
+		- example: apply a 50px padding to all post titles: .post-title { padding: 50px; }
+*/
+
+
+/* # 1. layout/structure # */
+
+/* = [1a] layout = */
+/* 	to avoid browser bugs, only modify width/float here if necessary.
+	to add inside spacing to the content divs, add margins to the content divs section below.
+*/
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#sidebar-container {
+	width: 300px;
+	float: right;
+}
+
+#content-container {
+	width: 700px;
+	float: left;
+}
+
+#footer-container {
+	clear: both;
+}
+
+
+/* = [1b] content divs = */
+/*	to add inside spacing to the content divs, use margins, not padding.
+	padding expands the content box; margins do not. https://developer.mozilla.org/en-US/docs/CSS/box_model */
+#content, #sidebar, #footer {
+	margin: 20px;
+}
+
+
+/* # 2. blogengine controls # */
+
+/* [2a] widget controls */
+/* removes controls from the flow, as to not affect the preview. */
+.widget a.move,
+.widget a.delete,
+.widget a.edit {
+	position: absolute;
+	display: block;
+	z-index: 20;
+	margin-left: -20px;
+	background-color: #e0e0e0;
+}
+
+.widget a.edit {
+	margin-top: 15px;
+}
+
+.widget a.delete {
+	margin-top: 30px;
+}
+
+
+/* # 3. importer content # */
+
+/* = [3a] thumbnails = */
+/*	these class names are inserted by the BlogEngine importer. */
+.article-img-frame, .article-img-frame img {
+	width: 250px;
+}
+
+.article-img-frame, .article-thumbnail-frame {
+	float: left;
+	text-align: center;
+	background-color: #eee;
+	border: 1px solid #1c1c1c;
+}
+
+.article-img-frame {
+	padding: 5px;
+	margin: 10px 20px 20px 0;
+	box-shadow: 0 6px 14px #99999c;
+}
+
+.article-thumbnail-frame {
+	padding: 5px;
+	margin: 0 5px 5px 0;
+}
+
+.article-thumbnail-frame img {
+	max-width: 100px;
+}
+
+span.caption {
+	font-size: 10px;
+	display: block;
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+
+
+/* # 4. style shims # */
+
+/* = [4a] widget link lists = */
+#sidebar .widget li a {
+	display: block; /* prevents annoying flickering when hovering between lines */
+}
+
+#sidebar .widget.monthlist li a { /* keeps numbering on the same line as link */
+	display: inline-block;
+}
+
+
+/* = [4b] post navigation = */
+#postnavigation {
+	color: transparent; /* effectively removes the vertical pipe between links without core hacks */
+	display: block;
+	padding-top: 5px;
+	margin: 5px 0;
+}
+
+#postnavigation a {
+	margin: 0;
+	padding: 0;
+	max-width: 49%;
+	min-height: 2.8em;
+	margin-bottom: 1em;
+}
+
+#postnavigation .nav-prev {
+	text-align: right;
+	float: right;
+}
+
+#postnavigation .nav-next {
+	text-align: left;
+	display: inline-block;
+	float: left;
+}
+
+
+/* = [4c] links = */
+a:hover {
+	text-decoration: none; /* global blogengine style only applies hover effects to widgets by default. */
+}
+
+
+/* = [4d] related posts = */
+#relatedPosts a {
+	display: block; /* related post links are a mess of <a /> tags, not a list. this puts each link on its own line. */
+}

@@ -1,0 +1,9 @@
+form.body#aspnetForm {
+	margin-top: 18px;
+}
+
+#q-notes {
+	display: block;
+	background: #191919;
+	z-index: 30;
+}
