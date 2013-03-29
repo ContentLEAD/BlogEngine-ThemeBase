@@ -176,6 +176,8 @@ span.caption {
 	float: left;
 }
 
+.post-title { clear: both; } /* stops post nav overflow from interfering with title */
+
 
 /* = [4c] links = */
 a:hover {
